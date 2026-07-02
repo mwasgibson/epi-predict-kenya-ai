@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-kenya-map.png";
 
 const Hero = () => {
@@ -36,9 +37,11 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="lg" className="group">
-                Start Free Pilot
-                <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+              <Button variant="hero" size="lg" className="group" asChild>
+                <Link to="/dashboard">
+                  Go to Dashboard
+                  <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                </Link>
               </Button>
               <Button variant="outline" size="lg" className="group">
                 <Play className="h-5 w-5 group-hover:scale-110 transition-transform" />

@@ -17,7 +17,7 @@ const FinalCTA = () => {
           size="lg"
           className="bg-background text-primary hover:bg-background/90 font-semibold"
         >
-          <Link to="/signup">Start Your Free 90-Day Pilot</Link>
+          <Link to="/dashboard">Go to Dashboard</Link>
         </Button>
         
         <p className="text-sm text-primary-foreground/70 mt-4">

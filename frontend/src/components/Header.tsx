@@ -38,13 +38,10 @@ const Header = () => {
           ))}
         </div>
 
-        {/* Desktop Buttons */}
+        {/* Desktop Button */}
         <div className="hidden md:flex items-center gap-4">
-          <Button variant="ghost" size="sm" asChild>
-            <Link to="/login">Login</Link>
-          </Button>
           <Button variant="hero" size="default" asChild>
-            <Link to="/signup">Start Free Pilot</Link>
+            <Link to="/dashboard">Go to Dashboard</Link>
           </Button>
         </div>
 
@@ -78,11 +75,8 @@ const Header = () => {
               </a>
             ))}
             <div className="pt-4 border-t border-border space-y-2">
-              <Button variant="ghost" className="w-full justify-start min-h-[48px]" asChild>
-                <Link to="/login" onClick={() => setIsMenuOpen(false)}>Login</Link>
-              </Button>
               <Button variant="hero" className="w-full min-h-[48px]" asChild>
-                <Link to="/signup" onClick={() => setIsMenuOpen(false)}>Start Free Pilot</Link>
+                <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>Go to Dashboard</Link>
               </Button>
             </div>
           </div>

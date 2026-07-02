@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Home, Calendar, Bell, BarChart3, Map, Settings, HelpCircle, LogOut, Activity, Menu, X } from "lucide-react";
+import { Home, Calendar, Bell, BarChart3, Map, Settings, HelpCircle, Activity, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const menuItems = [
@@ -73,12 +73,12 @@ function SidebarFooter({ onNavigate }: { onNavigate?: () => void }) {
         <span>Help & Support</span>
       </Link>
       <Link
-        to="/login"
+        to="/"
         onClick={onNavigate}
-        className="flex items-center gap-3 px-4 py-2.5 text-sm text-destructive/80 hover:text-destructive rounded-xl hover:bg-destructive/5 transition-all min-h-[48px]"
+        className="flex items-center gap-3 px-4 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-xl hover:bg-[var(--hover-bg)] transition-all min-h-[48px]"
       >
-        <LogOut className="w-4 h-4" />
-        <span>Logout</span>
+        <Home className="w-4 h-4" />
+        <span>Back to Home</span>
       </Link>
 
       {/* User profile */}

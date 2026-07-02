@@ -3,18 +3,6 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-vi.mock("@/contexts/AuthContext", () => ({
-    useAuth: () => ({
-        user: { email: "test@epipredict.co.ke", user_metadata: { full_name: "Test User" } },
-        session: { access_token: "mock-token" },
-        loading: false,
-        signIn: vi.fn(),
-        signUp: vi.fn(),
-        signOut: vi.fn(),
-    }),
-    AuthProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
-}));
-
 vi.mock("@/contexts/ThemeProvider", () => ({
     useTheme: () => ({ theme: "light", toggleTheme: vi.fn() }),
     ThemeProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,

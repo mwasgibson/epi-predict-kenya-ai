@@ -1,8 +1,7 @@
-import { Search, Bell, ChevronDown, Shield, Sun, Moon, Menu, LogOut } from "lucide-react";
+import { Search, Bell, ChevronDown, Shield, Sun, Moon, Menu, Home } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/contexts/ThemeProvider";
-import { useAuth } from "@/contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MobileDrawer } from "@/components/dashboard/DashboardSidebar";
 
 export function DashboardHeader() {
@@ -10,8 +9,6 @@ export function DashboardHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const { user, signOut } = useAuth();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
@@ -30,17 +27,6 @@ export function DashboardHeader() {
     second: "2-digit",
     hour12: false,
   });
-
-  // Derive user initials from metadata or email
-  const fullName = user?.user_metadata?.full_name as string | undefined;
-  const initials = fullName
-    ? fullName.split(" ").map((n: string) => n[0]).join("").slice(0, 2).toUpperCase()
-    : (user?.email?.slice(0, 2).toUpperCase() ?? "EP");
-
-  const handleLogout = async () => {
-    await signOut();
-    navigate("/");
-  };
 
   return (
     <>
@@ -120,7 +106,7 @@ export function DashboardHeader() {
               className="flex items-center gap-2 p-1.5 rounded-xl hover:bg-[var(--hover-bg)] transition-colors"
             >
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-xs font-bold text-primary-foreground">
-                {initials}
+                EP
               </div>
               <ChevronDown className="w-3.5 h-3.5 text-muted-foreground hidden md:block" />
             </button>
@@ -128,16 +114,16 @@ export function DashboardHeader() {
             {showUserMenu && (
               <div className="absolute right-0 mt-2 w-56 rounded-xl border border-border bg-card shadow-lg z-50">
                 <div className="px-4 py-3 border-b border-border">
-                  <p className="text-sm font-medium text-foreground truncate">{fullName || "Health Officer"}</p>
-                  <p className="text-xs text-muted-foreground truncate">{user?.email || "—"}</p>
+                  <p className="text-sm font-medium text-foreground truncate">Health Officer</p>
+                  <p className="text-xs text-muted-foreground truncate">EpiPredict User</p>
                 </div>
-                <button
-                  onClick={handleLogout}
-                  className="flex items-center gap-2 w-full px-4 py-2.5 text-sm text-destructive hover:bg-destructive/10 transition-colors rounded-b-xl"
+                <Link
+                  to="/"
+                  className="flex items-center gap-2 w-full px-4 py-2.5 text-sm text-muted-foreground hover:bg-[var(--hover-bg)] transition-colors rounded-b-xl"
                 >
-                  <LogOut className="w-4 h-4" />
-                  Sign out
-                </button>
+                  <Home className="w-4 h-4" />
+                  Back to Home
+                </Link>
               </div>
             )}
           </div>
